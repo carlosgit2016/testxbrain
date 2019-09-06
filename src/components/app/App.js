@@ -1,15 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import { isBrowser } from '../../utils/checks';
 import './App.css';
 
-function App() {
+// Stateless component
+export default function App() {
   return (
+
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <img className="App-logo" alt="logo" />
+        <p> {{isBrowser}} </p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -17,10 +17,10 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+  </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+
