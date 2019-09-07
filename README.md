@@ -10,4 +10,5 @@
 ### Observações
  - Implementar as telas responsivas.
  - Inserir validações no formulário
- - Pode-se personalizar qualquer component para se adequar ao design 
+ - Pode-se personalizar qualquer component para se adequar ao design
+ - Não é necessário implementar nenhum código back-end, as informações ficarão todas armazenadas no browser.

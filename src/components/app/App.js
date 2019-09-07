@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Products from '../Products';
 import './App.css';
 
-// Stateless component
-export default function App() {
-  return (
+export default class App extends Component {
 
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  )
+  render() {
+    return (
+
+      <div className="App">
+        <Products></Products>
+      </div>
+    )
+  }
 }
 
 
