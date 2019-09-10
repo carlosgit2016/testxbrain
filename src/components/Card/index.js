@@ -1,8 +1,6 @@
-import { Grid, SvgIcon } from '@material-ui/core';
+//material-ui
+import { Button, Fab, Grid, Input } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
-import { Button } from '@material-ui/core';
-import { Input } from '@material-ui/core';
-import { Fab } from '@material-ui/core';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -10,7 +8,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+//react
 import React from 'react';
+//fe-test-master
 import './style.css';
 
 const useStyles = makeStyles({
@@ -28,29 +28,45 @@ const useStyles = makeStyles({
         fontSize: "0.6em"
     },
     input: {
-        textAlign: "center",
-        color:"red"
+        alignItems: "center"
+    },
+    grid: {
+        marginTop: "1em"
     }
 });
 
 const AddComponent = (props) => {
 
-    const classes = useStyles();
+
+    function plusProduct() {
+        if (counter < 100) setCounter(counter + 1);
+    }
+
+    function minusProduct() {
+        if (counter > 0) setCounter(counter - 1);
+    }
+
+    const [counter, setCounter] = React.useState(0);
 
     return (
-        <Grid container spacing={3}>
+        <Grid container spacing={3}  >
             <Grid item xs={3}>
-                <Fab aria-label="delete" size="small" className={classes.fab}>
+                <Fab aria-label="remove" size="small" onClick={minusProduct}>
                     <RemoveIcon />
                 </Fab>
             </Grid>
             <Grid item xs={6}>
-                <Input type='up-down' onChange={value => console.log(value)} className={classes.input} />
+                <Input inputProps={{ style: { textAlign: 'center' } }} type='number' value={counter} fullWidth readOnly onChange={value => console.log(value)} />
             </Grid>
             <Grid item xs={3}>
-                <Fab aria-label="delete" size="small" className={classes.fab}>
+                <Fab aria-label="add" size="small" onClick={plusProduct}>
                     <AddIcon />
                 </Fab>
+            </Grid>
+            <Grid item xs={12}>
+                <Button variant="contained" color="primary" fullWidth >
+                    Adicionar
+                </Button>
             </Grid>
         </Grid>
     )
