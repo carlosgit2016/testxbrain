@@ -12,14 +12,14 @@ import './App.css';
 const theme = createMuiTheme({
   palette: {
     primary: blue
-  },
+  }
 });
 
 const App = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-          <Products products={products} ></Products>
+        <Products products={products} ></Products>
       </ThemeProvider>
     </div>
   )

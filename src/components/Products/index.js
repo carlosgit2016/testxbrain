@@ -1,5 +1,6 @@
 import { Divider, Typography } from '@material-ui/core';
 import React, { Component } from 'react';
+import { Grid } from '@material-ui/core';
 import Card from '../Card';
 
 class Products extends Component {
@@ -7,7 +8,7 @@ class Products extends Component {
         super(props);
         this.state = {}
     }
-    
+
     render() {
 
         return (
@@ -15,11 +16,13 @@ class Products extends Component {
             <div>
                 <Typography> Produtos </Typography>
                 <Divider></Divider>
-                {
-                    this.props.products.map(product => {
-                        return <Card product={product} ></Card>
-                    })
-                }
+                <Grid container spacing={3}>
+                    {
+                        this.props.products.map(product => {
+                            return <Grid key={product.img} item xs><Card product={product} ></Card></Grid>
+                        })
+                    }
+                </Grid>
             </div>
         );
     }
