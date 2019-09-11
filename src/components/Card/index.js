@@ -15,7 +15,9 @@ import './style.css';
 const useStyles = makeStyles({
     card: {
         maxWidth: 345,
-        width: "17em"
+        width: "17em",
+        minHeight: 387,
+        minWidth: 272
     },
     price: {
         fontSize: "1.2rem"
@@ -55,7 +57,7 @@ const AddComponent = (props) => {
 
     return (
 
-        <Grid container spacing={3}  >
+        <Grid container spacing={3} >
             <Grid item xs={3}>
                 <Fab aria-label="remove" size="small" onClick={(event) => changeAmountValue(event, 'subtraction')}>
                     <RemoveIcon />
@@ -72,7 +74,7 @@ const AddComponent = (props) => {
             <Grid item xs={12}>
                 <Button variant="contained" color="primary" fullWidth >
                     Adicionar
-                    </Button>
+                </Button>
             </Grid>
         </Grid>
     )

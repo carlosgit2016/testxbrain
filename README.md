@@ -18,7 +18,8 @@
  - Criar reducers e actions necessárias (client data, products) *
  - Criar input de produtos em formato JSON para ser consumido pela aplicação *
  - Construir component de card de acordo com o design *   
- - Iterar sobre os produtos no component de produtos e construir todos os Cards necessários
+ - Iterar sobre os produtos no component de produtos e construir todos os Cards necessários *
+    - Ajustar Grid ao meio da tela *
  - Definir um estado para o preço total do produtos na Store
  - Criar action para products para adicionar preço do produtos no estado de preço total
  - Montar formulario usando redux form
