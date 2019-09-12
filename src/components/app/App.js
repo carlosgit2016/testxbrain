@@ -8,6 +8,9 @@ import React from 'react';
 // fe-test-master
 import { products } from '../../data/products.json'; //imported products database
 import Products from '../Products';
+import FinalizedPurchase from '../Finalized-Purchase';
+//react-router-dom
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
@@ -22,7 +25,10 @@ const App = () => {
     <div className="App">
       <ThemeProvider theme={theme}>
         <Container>
-            <Products products={products} ></Products>
+          <Router>
+            <Route exact path="/" component={() => (<Products products={products} ></Products>)} />
+            <Route path="/finish" component={FinalizedPurchase} />
+          </Router>
         </Container>
       </ThemeProvider>
     </div>

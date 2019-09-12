@@ -83,13 +83,9 @@ function checkError(touched, error) {
     return touched && (typeof error === 'string');
 }
 
-const ClientData = (props) => {
-    const { handleSubmit, pristine, reset, submitting } = props
+const ClientData = () => {
     const classes = useStyles();
-    const [sex, setSex] = React.useState("male");
-    const handleSex = sex => setSex(sex.target.value);
-
-
+    
     return (
         <form>
             <Grid container spacing={3}>
@@ -154,4 +150,4 @@ const ClientData = (props) => {
     )
 }
 
-export default reduxForm({ form: 'clientData', validate })(ClientData);
+export default reduxForm({ form: 'clientData', validate,destroyOnUnmount:false })(ClientData);

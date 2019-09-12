@@ -25,5 +25,5 @@
  - Zerar contador após adicionar :muscle:
  - Mostrar mensagem no topo direito da tela que adicionou o produto e a quantidade :muscle:
  - Montar formulario usando redux form :collision:
- - Configurar router 
+ - Configurar router :muscle:
  - Apresentar informações no component Finalized Purchase
