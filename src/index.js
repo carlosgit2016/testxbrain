@@ -2,10 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/app/App.js';
-import * as serviceWorker from './serviceWorker';
-ReactDOM.render(<App />, document.getElementById('root'));
+//react-redux
+import { Provider } from 'react-redux'
+//redux
+import { createStore } from 'redux';
+// fe-test-master
+import rootReducer from './redux/reducers/index';
+//notistack
+import { SnackbarProvider } from 'notistack';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const store = createStore(rootReducer);
+
+ReactDOM.render(
+
+    <Provider store={store}>
+        <SnackbarProvider maxSnack={3}>
+            <App />
+        </SnackbarProvider>
+    </Provider>
+    , document.getElementById('root'));

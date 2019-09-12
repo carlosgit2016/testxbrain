@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 // react
 import React from 'react';
+//redux-form
+import { Field, reduxForm } from 'redux-form'
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -23,36 +25,96 @@ const sexs = [
     }
 ]
 
-const ClientData = () => {
-    const classes = useStyles();
-    const [sex, setSex] = React.useState("male")
+const validate = values => {
+    const errors = {}
+    const requiredFields = [
+        'name',
+        'sex',
+        'email'
+    ]
+    requiredFields.forEach(field => {
+        if (!values[field]) {
+            errors[field] = 'Required'
+        }
+    })
+    if (values.email && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email))) {
+        errors.email = "Endereço de email invalido"
+    }
+    return errors
+}
 
+const renderTextField = ({
+    input,
+    label,
+    meta: { touched, error },
+    ...custom
+}) => {
+    return (
+
+        <TextField
+            label={label}
+            error={checkError(touched, error)}
+            {...input}
+            {...custom}
+        />
+    )
+}
+
+const renderSelectField = ({
+    input,
+    label,
+    children,
+    meta: { touched, error },
+    ...custom
+}) => (
+        <TextField
+            label={label}
+            error={checkError(touched, error)}
+            {...input}
+            children={children}
+            {...custom}
+        >
+        </TextField>
+    )
+
+
+
+function checkError(touched, error) {
+    return touched && (typeof error === 'string');
+}
+
+const ClientData = (props) => {
+    const { handleSubmit, pristine, reset, submitting } = props
+    const classes = useStyles();
+    const [sex, setSex] = React.useState("male");
     const handleSex = sex => setSex(sex.target.value);
 
+
     return (
-        <form validate="true" autoComplete="off">
+        <form>
             <Grid container spacing={3}>
                 <Grid item lg={5}>
-                    <TextField
+                    <Field
                         id="name"
-                        fullWidth
+                        name="name"
+                        component={renderTextField}
                         label="Nome"
-                        className={classes.textField}
-                        placeholder="Nome do cliente aqui"
-                        margin="normal"
-                        variant="outlined"
                         InputLabelProps={{
                             shrink: true,
                         }}
-                    >
-
-                    </TextField>
+                        fullWidth
+                        className={classes.textField}
+                        variant="outlined"
+                        margin="normal"
+                        placeholder="Nome do cliente aqui"
+                    />
                 </Grid>
                 <Grid item lg={5}>
-                    <TextField
+                    <Field
                         id="email"
+                        name="email"
+                        component={renderTextField}
                         fullWidth
-                        type="email"
                         label="Email"
                         className={classes.textField}
                         placeholder="Digite seu email aqui"
@@ -61,17 +123,17 @@ const ClientData = () => {
                         InputLabelProps={{
                             shrink: true,
                         }}>
-
-                    </TextField>
+                    </Field>
                 </Grid>
                 <Grid item lg={2}>
-                    <TextField
+
+                    <Field
                         id="sex"
+                        name="sex"
+                        component={renderSelectField}
                         fullWidth
                         select
                         label="Sexo"
-                        value={sex}
-                        onChange={sex => handleSex(sex)}
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
@@ -84,11 +146,12 @@ const ClientData = () => {
                                 {sex.label}
                             </MenuItem>
                         ))}
-                    </TextField>
+
+                    </Field>
                 </Grid>
             </Grid>
         </form>
     )
 }
 
-export default ClientData;
+export default reduxForm({ form: 'clientData', validate })(ClientData);

@@ -11,6 +11,11 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import React from 'react';
 //fe-test-master
 import './style.css';
+import { addProductToCard } from '../../redux/actions/productsAction';
+//react-redux
+import { connect } from 'react-redux';
+//notistack
+import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles({
     card: {
@@ -53,7 +58,16 @@ const AddComponent = (props) => {
         if (counter > 0) setCounter(counter - 1);
     }
 
+    function clearCount() {
+        setCounter(0);
+    }
+
     const [counter, setCounter] = React.useState(0);
+
+    function onAction() {
+        props.onAction(counter);
+        clearCount();
+    }
 
     return (
 
@@ -72,7 +86,7 @@ const AddComponent = (props) => {
                 </Fab>
             </Grid>
             <Grid item xs={12}>
-                <Button variant="contained" color="primary" fullWidth >
+                <Button variant="contained" color="primary" fullWidth onClick={onAction} disabled={counter === 0} >
                     Adicionar
                 </Button>
             </Grid>
@@ -84,9 +98,19 @@ const CardComponent = (props) => {
     const classes = useStyles();
     const { img, description, price, method } = props.product;
     const [showAdd, setAddProducts] = React.useState(false);
+    const { enqueueSnackbar } = useSnackbar();
 
     function handleExpandClick() {
         setAddProducts(showAdd => !showAdd);
+    }
+
+    function onSelectProduct(amount) {
+        props.dispatch(addProductToCard(props.product,amount));
+        showMessage(`${amount} ${amount > 1 ?  'produtos' : 'produto' } adicionados com sucesso`, { variant: "success" })
+    }
+
+    function showMessage(message, options) {
+        enqueueSnackbar(message, options)
     }
 
     return (
@@ -112,7 +136,7 @@ const CardComponent = (props) => {
                     R$ {method.inCash.toFixed(2)} à vista (10% de desconto)
                     </Typography>
                 <Collapse in={showAdd} >
-                    <AddComponent show={showAdd} ></AddComponent>
+                    <AddComponent onAction={onSelectProduct} show={showAdd} ></AddComponent>
                 </Collapse>
             </CardContent>
 
@@ -120,4 +144,4 @@ const CardComponent = (props) => {
     );
 }
 
-export default CardComponent;
+export default connect()(CardComponent);

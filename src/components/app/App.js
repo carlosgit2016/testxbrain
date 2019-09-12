@@ -22,7 +22,7 @@ const App = () => {
     <div className="App">
       <ThemeProvider theme={theme}>
         <Container>
-          <Products products={products} ></Products>
+            <Products products={products} ></Products>
         </Container>
       </ThemeProvider>
     </div>
