@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/testxbrain/static/css/main.c29a0505.chunk.css",
+    "main.js": "/testxbrain/static/js/main.f24eeae3.chunk.js",
+    "main.js.map": "/testxbrain/static/js/main.f24eeae3.chunk.js.map",
+    "runtime~main.js": "/testxbrain/static/js/runtime~main.5739bb2d.js",
+    "runtime~main.js.map": "/testxbrain/static/js/runtime~main.5739bb2d.js.map",
+    "static/js/2.1c859c26.chunk.js": "/testxbrain/static/js/2.1c859c26.chunk.js",
+    "static/js/2.1c859c26.chunk.js.map": "/testxbrain/static/js/2.1c859c26.chunk.js.map",
+    "index.html": "/testxbrain/index.html",
+    "precache-manifest.572e7d98542fe20269fd494e85465edc.js": "/testxbrain/precache-manifest.572e7d98542fe20269fd494e85465edc.js",
+    "service-worker.js": "/testxbrain/service-worker.js",
+    "static/css/main.c29a0505.chunk.css.map": "/testxbrain/static/css/main.c29a0505.chunk.css.map"
+  }
+}
