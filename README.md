@@ -2,10 +2,10 @@
 
 ### A fazer
  - [x] Criar pagina de produto
- - [ ] Criar pagina finalização de compra
+ - [x] Criar pagina finalização de compra
  - [x] O usuário deve poder inserir a quantidade dos produtos desejados, inserir os dados nos formularios e finalizar a venda
- - [ ] Na pagina de finalização da compra exibir o nome do cliente e o valor total da compra
- - [ ] Colocar botão "Inicar nova compra" para redirecionar para tela de produtos
+ - [x] Na pagina de finalização da compra exibir o nome do cliente e o valor total da compra
+ - [x] Colocar botão "Inicar nova compra" para redirecionar para tela de produtos
 
 ### Observações
  - Implementar as telas responsivas. :+1:
@@ -26,4 +26,4 @@
  - Mostrar mensagem no topo direito da tela que adicionou o produto e a quantidade :muscle:
  - Montar formulario usando redux form :collision:
  - Configurar router :muscle:
- - Apresentar informações no component Finalized Purchase
+ - Apresentar informações no component Finalized Purchase :muscle:
